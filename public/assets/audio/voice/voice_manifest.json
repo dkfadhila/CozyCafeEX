@@ -1,0 +1,506 @@
+[
+  {
+    "file": "vo_chef_male_tut_01.mp3",
+    "speaker": "chef_male",
+    "key": "tut_01",
+    "text": "Welcome to Cozy Cafe EX! I'm your chef for today.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 3.6
+  },
+  {
+    "file": "vo_chef_male_tut_02.mp3",
+    "speaker": "chef_male",
+    "key": "tut_02",
+    "text": "Let's take a quick look around.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 1.52
+  },
+  {
+    "file": "vo_chef_male_tut_03.mp3",
+    "speaker": "chef_male",
+    "key": "tut_03",
+    "text": "Use the movement keys to walk around the cafe.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 2.72
+  },
+  {
+    "file": "vo_chef_male_tut_04.mp3",
+    "speaker": "chef_male",
+    "key": "tut_04",
+    "text": "Come closer to a station to interact with it.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 2.64
+  },
+  {
+    "file": "vo_chef_male_tut_05.mp3",
+    "speaker": "chef_male",
+    "key": "tut_05",
+    "text": "A customer has arrived. Let's check their order.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 2.72
+  },
+  {
+    "file": "vo_chef_male_tut_06.mp3",
+    "speaker": "chef_male",
+    "key": "tut_06",
+    "text": "Choose the right station to prepare the order.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 2.48
+  },
+  {
+    "file": "vo_chef_male_tut_07.mp3",
+    "speaker": "chef_male",
+    "key": "tut_07",
+    "text": "Your order is ready! Pick it up and bring it to the customer.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 3.2
+  },
+  {
+    "file": "vo_chef_male_tut_08.mp3",
+    "speaker": "chef_male",
+    "key": "tut_08",
+    "text": "Lovely work! The customer is enjoying their treat.",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 3.36
+  },
+  {
+    "file": "vo_chef_male_tut_09.mp3",
+    "speaker": "chef_male",
+    "key": "tut_09",
+    "text": "That's the basics. Let's make this cafe a little busier!",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 3.28
+  },
+  {
+    "file": "vo_chef_male_react_start.mp3",
+    "speaker": "chef_male",
+    "key": "react_start",
+    "text": "Coming right up!",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 1.2
+  },
+  {
+    "file": "vo_chef_male_react_ready.mp3",
+    "speaker": "chef_male",
+    "key": "react_ready",
+    "text": "Order up!",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 0.96
+  },
+  {
+    "file": "vo_chef_male_react_serve.mp3",
+    "speaker": "chef_male",
+    "key": "react_serve",
+    "text": "Here you go. Enjoy!",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 1.68
+  },
+  {
+    "file": "vo_chef_male_react_day.mp3",
+    "speaker": "chef_male",
+    "key": "react_day",
+    "text": "What a lovely day. Great work!",
+    "voiceId": "HA0l4mdbFefIEhaeQEbV",
+    "voiceName": "Tirta",
+    "durationSec": 2.72
+  },
+  {
+    "file": "vo_chef_female_tut_01.mp3",
+    "speaker": "chef_female",
+    "key": "tut_01",
+    "text": "Welcome to Cozy Cafe EX! I'm your chef for today.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 4.0
+  },
+  {
+    "file": "vo_chef_female_tut_02.mp3",
+    "speaker": "chef_female",
+    "key": "tut_02",
+    "text": "Let's take a quick look around.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 1.92
+  },
+  {
+    "file": "vo_chef_female_tut_03.mp3",
+    "speaker": "chef_female",
+    "key": "tut_03",
+    "text": "Use the movement keys to walk around the cafe.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 2.88
+  },
+  {
+    "file": "vo_chef_female_tut_04.mp3",
+    "speaker": "chef_female",
+    "key": "tut_04",
+    "text": "Come closer to a station to interact with it.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 2.8
+  },
+  {
+    "file": "vo_chef_female_tut_05.mp3",
+    "speaker": "chef_female",
+    "key": "tut_05",
+    "text": "A customer has arrived. Let's check their order.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 3.12
+  },
+  {
+    "file": "vo_chef_female_tut_06.mp3",
+    "speaker": "chef_female",
+    "key": "tut_06",
+    "text": "Choose the right station to prepare the order.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 2.66
+  },
+  {
+    "file": "vo_chef_female_tut_07.mp3",
+    "speaker": "chef_female",
+    "key": "tut_07",
+    "text": "Your order is ready! Pick it up and bring it to the customer.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 3.6
+  },
+  {
+    "file": "vo_chef_female_tut_08.mp3",
+    "speaker": "chef_female",
+    "key": "tut_08",
+    "text": "Lovely work! The customer is enjoying their treat.",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 3.76
+  },
+  {
+    "file": "vo_chef_female_tut_09.mp3",
+    "speaker": "chef_female",
+    "key": "tut_09",
+    "text": "That's the basics. Let's make this cafe a little busier!",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 4.0
+  },
+  {
+    "file": "vo_chef_female_react_start.mp3",
+    "speaker": "chef_female",
+    "key": "react_start",
+    "text": "Coming right up!",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 1.36
+  },
+  {
+    "file": "vo_chef_female_react_ready.mp3",
+    "speaker": "chef_female",
+    "key": "react_ready",
+    "text": "Order up!",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 1.04
+  },
+  {
+    "file": "vo_chef_female_react_serve.mp3",
+    "speaker": "chef_female",
+    "key": "react_serve",
+    "text": "Here you go. Enjoy!",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 1.92
+  },
+  {
+    "file": "vo_chef_female_react_day.mp3",
+    "speaker": "chef_female",
+    "key": "react_day",
+    "text": "What a lovely day. Great work!",
+    "voiceId": "qN6Gb70CosiMCZd0LgkV",
+    "voiceName": "Hura",
+    "durationSec": 3.04
+  },
+  {
+    "file": "vo_npc_01_greet.mp3",
+    "speaker": "npc_01",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "bIHbv24MWmeRgasZH58o",
+    "voiceName": "Will - Relaxed Optimist",
+    "durationSec": 1.76
+  },
+  {
+    "file": "vo_npc_01_smell.mp3",
+    "speaker": "npc_01",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "bIHbv24MWmeRgasZH58o",
+    "voiceName": "Will - Relaxed Optimist",
+    "durationSec": 2.08
+  },
+  {
+    "file": "vo_npc_01_thanks.mp3",
+    "speaker": "npc_01",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "bIHbv24MWmeRgasZH58o",
+    "voiceName": "Will - Relaxed Optimist",
+    "durationSec": 0.96
+  },
+  {
+    "file": "vo_npc_01_lovely.mp3",
+    "speaker": "npc_01",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "bIHbv24MWmeRgasZH58o",
+    "voiceName": "Will - Relaxed Optimist",
+    "durationSec": 1.44
+  },
+  {
+    "file": "vo_npc_01_bye.mp3",
+    "speaker": "npc_01",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "bIHbv24MWmeRgasZH58o",
+    "voiceName": "Will - Relaxed Optimist",
+    "durationSec": 1.28
+  },
+  {
+    "file": "vo_npc_02_greet.mp3",
+    "speaker": "npc_02",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+    "voiceName": "Liam - Energetic, Social Media Creator",
+    "durationSec": 1.6
+  },
+  {
+    "file": "vo_npc_02_smell.mp3",
+    "speaker": "npc_02",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+    "voiceName": "Liam - Energetic, Social Media Creator",
+    "durationSec": 2.0
+  },
+  {
+    "file": "vo_npc_02_thanks.mp3",
+    "speaker": "npc_02",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+    "voiceName": "Liam - Energetic, Social Media Creator",
+    "durationSec": 0.88
+  },
+  {
+    "file": "vo_npc_02_lovely.mp3",
+    "speaker": "npc_02",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+    "voiceName": "Liam - Energetic, Social Media Creator",
+    "durationSec": 1.44
+  },
+  {
+    "file": "vo_npc_02_bye.mp3",
+    "speaker": "npc_02",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "TX3LPaxmHKxFdv7VOQHJ",
+    "voiceName": "Liam - Energetic, Social Media Creator",
+    "durationSec": 1.12
+  },
+  {
+    "file": "vo_npc_03_greet.mp3",
+    "speaker": "npc_03",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "voiceName": "Sarah - Mature, Reassuring, Confident",
+    "durationSec": 1.84
+  },
+  {
+    "file": "vo_npc_03_smell.mp3",
+    "speaker": "npc_03",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "voiceName": "Sarah - Mature, Reassuring, Confident",
+    "durationSec": 2.0
+  },
+  {
+    "file": "vo_npc_03_thanks.mp3",
+    "speaker": "npc_03",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "voiceName": "Sarah - Mature, Reassuring, Confident",
+    "durationSec": 0.88
+  },
+  {
+    "file": "vo_npc_03_lovely.mp3",
+    "speaker": "npc_03",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "voiceName": "Sarah - Mature, Reassuring, Confident",
+    "durationSec": 1.6
+  },
+  {
+    "file": "vo_npc_03_bye.mp3",
+    "speaker": "npc_03",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "EXAVITQu4vr4xnSDxMaL",
+    "voiceName": "Sarah - Mature, Reassuring, Confident",
+    "durationSec": 1.2
+  },
+  {
+    "file": "vo_npc_04_greet.mp3",
+    "speaker": "npc_04",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "IKne3meq5aSn9XLyUdCD",
+    "voiceName": "Charlie - Deep, Confident, Energetic",
+    "durationSec": 1.76
+  },
+  {
+    "file": "vo_npc_04_smell.mp3",
+    "speaker": "npc_04",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "IKne3meq5aSn9XLyUdCD",
+    "voiceName": "Charlie - Deep, Confident, Energetic",
+    "durationSec": 1.92
+  },
+  {
+    "file": "vo_npc_04_thanks.mp3",
+    "speaker": "npc_04",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "IKne3meq5aSn9XLyUdCD",
+    "voiceName": "Charlie - Deep, Confident, Energetic",
+    "durationSec": 0.8
+  },
+  {
+    "file": "vo_npc_04_lovely.mp3",
+    "speaker": "npc_04",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "IKne3meq5aSn9XLyUdCD",
+    "voiceName": "Charlie - Deep, Confident, Energetic",
+    "durationSec": 1.6
+  },
+  {
+    "file": "vo_npc_04_bye.mp3",
+    "speaker": "npc_04",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "IKne3meq5aSn9XLyUdCD",
+    "voiceName": "Charlie - Deep, Confident, Energetic",
+    "durationSec": 1.12
+  },
+  {
+    "file": "vo_npc_05_greet.mp3",
+    "speaker": "npc_05",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "voiceName": "Jessica - Playful, Bright, Warm",
+    "durationSec": 1.68
+  },
+  {
+    "file": "vo_npc_05_smell.mp3",
+    "speaker": "npc_05",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "voiceName": "Jessica - Playful, Bright, Warm",
+    "durationSec": 2.0
+  },
+  {
+    "file": "vo_npc_05_thanks.mp3",
+    "speaker": "npc_05",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "voiceName": "Jessica - Playful, Bright, Warm",
+    "durationSec": 0.96
+  },
+  {
+    "file": "vo_npc_05_lovely.mp3",
+    "speaker": "npc_05",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "voiceName": "Jessica - Playful, Bright, Warm",
+    "durationSec": 1.68
+  },
+  {
+    "file": "vo_npc_05_bye.mp3",
+    "speaker": "npc_05",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "cgSgspJ2msm6clMCkdW9",
+    "voiceName": "Jessica - Playful, Bright, Warm",
+    "durationSec": 1.2
+  },
+  {
+    "file": "vo_npc_06_greet.mp3",
+    "speaker": "npc_06",
+    "key": "greet",
+    "text": "A table for one, please.",
+    "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+    "voiceName": "Laura - Enthusiast, Quirky Attitude",
+    "durationSec": 1.76
+  },
+  {
+    "file": "vo_npc_06_smell.mp3",
+    "speaker": "npc_06",
+    "key": "smell",
+    "text": "That smells wonderful!",
+    "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+    "voiceName": "Laura - Enthusiast, Quirky Attitude",
+    "durationSec": 1.92
+  },
+  {
+    "file": "vo_npc_06_thanks.mp3",
+    "speaker": "npc_06",
+    "key": "thanks",
+    "text": "Thank you!",
+    "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+    "voiceName": "Laura - Enthusiast, Quirky Attitude",
+    "durationSec": 0.88
+  },
+  {
+    "file": "vo_npc_06_lovely.mp3",
+    "speaker": "npc_06",
+    "key": "lovely",
+    "text": "This is lovely.",
+    "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+    "voiceName": "Laura - Enthusiast, Quirky Attitude",
+    "durationSec": 1.44
+  },
+  {
+    "file": "vo_npc_06_bye.mp3",
+    "speaker": "npc_06",
+    "key": "bye",
+    "text": "I'll come again!",
+    "voiceId": "FGY2WhTYpPnrIDTdsKH5",
+    "voiceName": "Laura - Enthusiast, Quirky Attitude",
+    "durationSec": 1.2
+  }
+]

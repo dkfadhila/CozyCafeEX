@@ -1,0 +1,374 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.screen .art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- logo ---------- */
+.logo {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-weight: 900;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff7ea;
+  -webkit-text-stroke: 7px #5b3d2b;
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 rgba(60, 35, 20, 0.35);
+}
+
+.logo em {
+  font-style: normal;
+  font-size: 0.5em;
+  padding: 5px 10px 4px;
+  border-radius: 12px;
+  background: #f29e86;
+  color: #fff;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  transform: rotate(8deg) translateY(-4px);
+  box-shadow: 0 3px 0 #b9654f;
+}
+
+/* ---------- loading ---------- */
+.loading {
+  background: radial-gradient(120% 90% at 50% 20%, #fdf1dd 0%, #f6dcc0 60%, #eac6a4 100%);
+}
+
+.loading-foot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 80px 16px 38px;
+  background: linear-gradient(to top, rgba(74, 48, 30, 0.72), rgba(74, 48, 30, 0));
+  color: #fff7ea;
+  font-weight: 700;
+  text-align: center;
+}
+
+.loading-foot p {
+  margin: 0;
+  min-height: 1.4em;
+  text-shadow: 0 1px 3px rgba(40, 20, 10, 0.6);
+}
+
+.loading-foot .load-error {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #fde8e4;
+  color: #9a2f20;
+  text-shadow: none;
+}
+
+.loading .bar {
+  width: min(320px, 70vw);
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 247, 234, 0.35);
+  border: 2px solid #fff7ea;
+  overflow: hidden;
+}
+
+.loading .bar i {
+  display: block;
+  width: 38%;
+  height: 100%;
+  border-radius: 999px;
+  background: #f29e86;
+  animation: slide 1.5s ease-in-out infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+/* ---------- main menu ---------- */
+.menu {
+  background: #f6dcc0;
+}
+
+.menu.live-backdrop {
+  background: transparent; /* no video and no still: the frozen 3D cafe shows through */
+}
+
+.menu-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(60, 38, 24, 0.62) 0%, rgba(60, 38, 24, 0.28) 38%, rgba(60, 38, 24, 0) 65%);
+}
+
+.menu-panel {
+  position: absolute;
+  left: clamp(16px, 6vw, 90px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 12px;
+  width: min(300px, calc(100vw - 32px));
+}
+
+.menu-x {
+  position: absolute;
+  left: clamp(16px, 6vw, 90px);
+  bottom: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(40, 24, 14, 0.45);
+  color: #fff7ea;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.menu-x:hover,
+.menu-x:focus-visible {
+  opacity: 1;
+  outline: 2px solid #7fd0b0;
+  outline-offset: 2px;
+}
+
+.tagline {
+  margin: 2px 0 10px;
+  color: #fff7ea;
+  font-weight: 700;
+  font-size: 17px;
+  text-shadow: 0 1px 4px rgba(40, 20, 10, 0.7);
+}
+
+.btn {
+  padding: 13px 22px;
+  border: 3px solid #5b3d2b;
+  border-radius: 16px;
+  background: #fff7ea;
+  color: #4a3828;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #5b3d2b;
+  transition:
+    transform 0.08s,
+    box-shadow 0.08s,
+    background 0.15s;
+}
+
+.btn:hover:not(:disabled) {
+  background: #ffe9d2;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #5b3d2b;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #5b3d2b;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #7fd0b0;
+  outline-offset: 3px;
+}
+
+.btn.primary {
+  background: #63a98b;
+  color: #fff;
+}
+
+.btn.primary:hover:not(:disabled) {
+  background: #71b899;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(60, 40, 25, 0.5);
+}
+
+.sheet {
+  width: min(380px, calc(100vw - 32px));
+  padding: 24px 26px;
+  border: 3px solid #5b3d2b;
+  border-radius: 22px;
+  background: #fff7ea;
+  box-shadow: 0 6px 0 #5b3d2b;
+}
+
+.sheet h2 {
+  margin: 0 0 14px;
+  font-size: 24px;
+}
+
+.sheet dl {
+  margin: 0 0 18px;
+}
+
+.sheet dt {
+  font-size: 13px;
+  color: #8a7662;
+}
+
+.sheet dd {
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+
+/* ---------- character select ---------- */
+.select {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(16px, 4vh, 40px) 16px;
+  background:
+    radial-gradient(60% 50% at 50% 55%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 70%),
+    linear-gradient(180deg, #fbe9d3 0%, #f3d5b8 100%);
+  overflow-y: auto;
+}
+
+.select h1 {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 40px);
+  color: #5b3d2b;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-self: center;
+  gap: clamp(14px, 3vw, 32px);
+  min-height: 0;
+}
+
+.chef-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 4px;
+  width: min(280px, calc(50vw - 28px));
+  min-width: 150px;
+  padding: 14px 14px 18px;
+  border: 4px solid #e6cdb0;
+  border-radius: 26px;
+  background: #fffaf2;
+  color: #4a3828;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.chef-card img {
+  width: 100%;
+  height: clamp(150px, 40vh, 330px);
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 18px;
+  background: #f3e3cf;
+}
+
+.chef-card strong {
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.chef-card small {
+  font-weight: 700;
+  color: #b9654f;
+}
+
+.chef-card p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #6c5846;
+}
+
+.chef-card .badge {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 1;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.92);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.chef-card:hover {
+  transform: translateY(-3px);
+}
+
+.chef-card.on {
+  border-color: #63a98b;
+  box-shadow:
+    0 0 0 4px rgba(99, 169, 139, 0.25),
+    0 8px 0 #4c8a70;
+  transform: translateY(-4px);
+}
+
+.chef-card.on .badge {
+  background: #63a98b;
+  color: #fff;
+}
+
+.chef-card:focus-visible {
+  outline: 3px solid #7fd0b0;
+  outline-offset: 4px;
+}
+
+.select-actions {
+  display: flex;
+  gap: 14px;
+}
+
+.select-actions .btn {
+  min-width: 130px;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading .bar i {
+    animation: none;
+    width: 100%;
+    opacity: 0.6;
+  }
+
+  .btn,
+  .chef-card {
+    transition: none;
+  }
+}
