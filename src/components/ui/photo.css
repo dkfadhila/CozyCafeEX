@@ -1,0 +1,96 @@
+.photo-panel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  width: 250px;
+  padding: 12px;
+  border: 3px solid #5b3d2b;
+  border-radius: 16px;
+  background: #fff7ea;
+  color: #5b3d2b;
+  box-shadow: 0 4px 0 #5b3d2b;
+  font-size: 13px;
+  zoom: var(--ui-scale, 1);
+}
+
+.photo-panel h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.photo-poses,
+.photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.photo-panel button {
+  padding: 5px 10px;
+  border: 2px solid #5b3d2b;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #5b3d2b;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-panel button:hover {
+  background: #ffe9c9;
+}
+
+.photo-panel button.on {
+  background: #f0b46a;
+}
+
+.photo-panel button.shoot {
+  background: #7fd0b0;
+}
+
+.photo-panel button:focus-visible {
+  outline: 3px solid #7fd0b0;
+}
+
+.photo-panel kbd {
+  padding: 0 5px;
+  border: 1px solid #5b3d2b;
+  border-radius: 4px;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+}
+
+.photo-hint,
+.photo-note {
+  margin: 0;
+  color: #8a7662;
+  font-size: 12px;
+}
+
+.photo-note {
+  margin-top: 6px;
+  color: #3f8a6b;
+  font-weight: 700;
+}
+
+.photo-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 52px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.9);
+  color: #7a6653;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-btn:focus-visible {
+  outline: 3px solid #7fd0b0;
+}

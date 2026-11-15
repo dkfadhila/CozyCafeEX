@@ -4,10 +4,9 @@ import { CHEFS, PROPS, type CharacterAsset, type ChefId, type ClipName } from '.
 import { CAFE_LAYOUT, CHEF_SPAWN, WALK_HALF, type Placement } from '../data/cafeLayout'
 import { applySkinFix } from '../assets/skinFixes'
 import { buildExterior } from './exterior'
-import { CAMERA_DISTANCE, CameraRig } from './CameraRig'
+import { CAMERA_DISTANCE, CameraRig, VIEW_SIZE } from './CameraRig'
 import type { Settings } from '../systems/settings'
 
-const VIEW_SIZE = 10.5 // world units visible vertically
 const WALK_SPEED = 2.2 // metres per second
 const TURN_RATE = 12 // higher = snappier turning
 const CHEF_RADIUS = 0.28
@@ -20,6 +19,10 @@ const WALL_FADED_OPACITY = 0.12
 const WALL_FADE_TAU = 0.15
 /** The sun's shadow frustum follows the look-at point in steps of this many metres (limits shimmer). */
 const SHADOW_SNAP = 0.5
+/** Shadow frustum half-extent limits (m) and the margin kept around the visible area. */
+const SHADOW_HALF_MAX = 13
+const SHADOW_HALF_MIN = 2.5
+const SHADOW_MARGIN = 1.2
 const SUN_OFFSET = new THREE.Vector3(-4, 9, 5)
 const DRAG_THRESHOLD_PX = 3
 /** Carried food position in the chef's local space (x right, y up, z forward) for a chef of CARRY_REFERENCE_HEIGHT. */
@@ -36,6 +39,8 @@ export interface Character {
   hipHeight: number
   /** Standing height in metres. */
   height: number
+  /** Height of the middle of the head above the feet when standing, in metres. */
+  headHeight: number
   /** Clip currently driving the character (null before the first playClip). */
   current: ClipName | null
 }
@@ -142,6 +147,10 @@ export class CafeScene {
   onTick: ((dt: number) => void) | null = null
   /** Called after every rendered frame, paused or not (audio listener, ambience). */
   onFrame: ((dt: number) => void) | null = null
+  /** Photo mode is on: the simulation stays frozen but the chef's mixer keeps playing (see tick). */
+  private photo = false
+  private photoFrozen = false
+  private shadowHalf = SHADOW_HALF_MAX
   /** When true the simulation (chef, customers, timers) is frozen; rendering continues. */
   paused = false
   /** True only while the player may control the camera (playing, no menu or overlay on top). */
@@ -564,6 +573,7 @@ export class CafeScene {
       bones,
       hipHeight: asset.height * 0.3,
       height: asset.height,
+      headHeight: asset.height * 0.88,
       current: null,
     }
     setWalking(c, false) // standing pose: measured below
@@ -571,6 +581,9 @@ export class CafeScene {
     if (bones.Hips) {
       root.updateMatrixWorld(true)
       c.hipHeight = bones.Hips.getWorldPosition(new THREE.Vector3()).y
+      const a = bones.Head?.getWorldPosition(new THREE.Vector3()).y
+      const b = bones.head_end?.getWorldPosition(new THREE.Vector3()).y
+      if (a !== undefined && b !== undefined && b > a) c.headHeight = (a + b) / 2
     }
     return c
   }
@@ -599,6 +612,7 @@ export class CafeScene {
     this.chefId = id
     this.chefMount = mount
     this.chefAction = null
+    this.rig.headHeight = next.headHeight
   }
 
   /** Which chef model is actually in the scene (null before the first load). */
@@ -714,7 +728,7 @@ export class CafeScene {
     if (!this.paused) {
       this.updateChef(dt)
       this.onTick?.(dt)
-    }
+    } else if (this.photo && !this.photoFrozen) this.chef?.mixer.update(dt) // photo mode: chef keeps animating
     if (this.renderEnabled) {
       this.updateCamera(dt)
       this.renderer.render(this.scene, this.camera)
@@ -726,7 +740,18 @@ export class CafeScene {
   private updateCamera(dt: number) {
     this.rig.update(dt, this.chef?.root.position ?? null, this.keys, this.cameraInputEnabled, this.drag !== null)
     this.updateWalls(dt)
-    // Keep the shadow frustum over what is on screen.
+    // Keep the shadow frustum over what is on screen; it tightens when zoomed in so shadow texels stay fine.
+    const aspect = (this.camera.right - this.camera.left) / (this.camera.top - this.camera.bottom)
+    const halfH = this.rig.visibleHeight / 2
+    const visHalf = Math.hypot(halfH * aspect, halfH / Math.max(Math.sin(this.rig.pitch), 0.15))
+    const half = THREE.MathUtils.clamp(visHalf + SHADOW_MARGIN + SHADOW_SNAP, SHADOW_HALF_MIN, SHADOW_HALF_MAX)
+    if (Math.abs(half - this.shadowHalf) > 0.02 * this.shadowHalf) {
+      const sc = this.sun.shadow.camera
+      sc.left = sc.bottom = -half
+      sc.right = sc.top = half
+      sc.updateProjectionMatrix()
+      this.shadowHalf = half
+    }
     const c = this.rig.center
     const sx = Math.round(c.x / SHADOW_SNAP) * SHADOW_SNAP
     const sz = Math.round(c.z / SHADOW_SNAP) * SHADOW_SNAP
@@ -770,12 +795,88 @@ export class CafeScene {
 
   private onKeyDown = (e: KeyboardEvent) => {
     this.keys.add(e.code)
-    if (e.repeat || !this.cameraInputEnabled || e.ctrlKey || e.metaKey || e.altKey) return
+    if (e.repeat || !this.cameraInputEnabled || this.photo || e.ctrlKey || e.metaKey || e.altKey) return
     if (e.code === 'KeyR') this.rig.reset(true)
     else if (e.code === 'KeyF') this.rig.toggleFollow()
   }
   private onKeyUp = (e: KeyboardEvent) => this.keys.delete(e.code)
   private onBlur = () => this.keys.clear()
+
+  // ---------------------------------------------------------------- photo mode
+
+  /** Poses offered in photo mode: the chef's existing clips only. */
+  get photoPoses(): { clip: ClipName; label: string }[] {
+    const all: { clip: ClipName; label: string }[] = [
+      { clip: 'idle', label: 'Idle' },
+      { clip: 'walk', label: 'Walk' },
+      { clip: 'cook', label: 'Cook' },
+      { clip: 'pickup', label: 'Pickup' },
+      { clip: 'cheer', label: 'Cheer' },
+      { clip: 'collect', label: 'Collect' },
+    ]
+    return all.filter((p) => !!this.chef?.actions[p.clip])
+  }
+
+  get photoMode() {
+    return this.photo
+  }
+
+  /** Enter / leave photo mode. The caller sets `paused` and `cameraInputEnabled`; this drives the camera and chef. */
+  setPhotoMode(on: boolean) {
+    if (on === this.photo) return
+    this.photo = on
+    this.photoFrozen = false
+    this.keys.clear()
+    this.drag = null
+    this.rig.setFree(on)
+    const chef = this.chef
+    if (on) {
+      this.chefAction = null
+      if (chef) {
+        // Hold the current pose, but never a walk (it would loop in place).
+        if (chef.current === 'walk') playClip(chef, 'idle', { fade: 0.15 })
+        this.focusChef()
+      }
+    } else if (chef) {
+      this.chefAction = null
+      chef.mixer.timeScale = 1
+      setWalking(chef, false)
+    }
+  }
+
+  /** Photo mode: loop one of the chef's clips (crossfaded). Walking is in place; the chef root never moves. */
+  setPhotoPose(name: ClipName): boolean {
+    const chef = this.chef
+    if (!chef || !this.photo) return false
+    this.photoFrozen = false
+    return playClip(chef, name, { loop: true, fade: 0.25 })
+  }
+
+  get photoPose(): ClipName | null {
+    return this.chef?.current ?? null
+  }
+
+  /** Photo mode: hold the chef at the current frame. */
+  setPhotoFrozen(on: boolean) {
+    this.photoFrozen = on
+  }
+
+  /** Photo mode: recentre the focus point on the chef's head. */
+  focusChef() {
+    const chef = this.chef
+    if (!chef) return
+    const p = chef.root.position
+    this.rig.focusOn(new THREE.Vector3(p.x, chef.headHeight, p.z))
+  }
+
+  /** Render one frame and grab the canvas as a PNG in the same task (no preserveDrawingBuffer needed). */
+  capturePhoto(): Promise<Blob | null> {
+    return new Promise((resolve) => {
+      this.updateCamera(0)
+      this.renderer.render(this.scene, this.camera)
+      this.canvas.toBlob((b) => resolve(b), 'image/png')
+    })
+  }
 
   /** Debug info for the dev overlay and tests. */
   get info() {

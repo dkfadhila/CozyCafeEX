@@ -9,6 +9,7 @@ import { CafeGame, type GameSnapshot } from './systems/CafeGame'
 import { loadSave, writeSave, type SaveData } from './systems/save'
 import { loadSettings, saveSettings, type Settings } from './systems/settings'
 import { CharacterSelect, LoadingScreen, MainMenu } from './components/ui/Screens'
+import { PhotoMode } from './components/ui/PhotoMode'
 import { PauseMenu, SettingsPanel, Tutorial } from './components/ui/Overlays'
 import type { ChefId } from './assets/manifest'
 import './App.css'
@@ -39,6 +40,7 @@ export default function App() {
   const audioRef = useRef<AudioSystem | null>(null)
   const ambientOnRef = useRef(true)
   const tutorialActiveRef = useRef(false)
+  const summaryOpenRef = useRef(false)
   const chefRef = useRef<ChefId>('male')
   const tutorialDoneRef = useRef(false)
   const [screen, setScreen] = useState<Screen>('loading')
@@ -50,6 +52,7 @@ export default function App() {
   const [paused, setPaused] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [tutorial, setTutorial] = useState(false)
+  const [photo, setPhoto] = useState(false)
   const [caption, setCaption] = useState<Caption | null>(null)
   const [menuCovered, setMenuCovered] = useState(true)
   const params = new URLSearchParams(location.search)
@@ -147,9 +150,15 @@ export default function App() {
 
   // The simulation runs only on the Playing screen with no overlay open.
   useEffect(() => {
-    if (sceneRef.current) sceneRef.current.paused = screen !== 'playing' || paused || settingsOpen
+    if (sceneRef.current) sceneRef.current.paused = screen !== 'playing' || paused || settingsOpen || photo
     if (sceneRef.current) sceneRef.current.cameraInputEnabled = screen === 'playing' && !paused && !settingsOpen
-  }, [screen, paused, settingsOpen])
+  }, [screen, paused, settingsOpen, photo])
+
+  // Photo mode: free camera and chef poses; the scene keeps rendering while the simulation is frozen.
+  useEffect(() => {
+    sceneRef.current?.setPhotoMode(photo && screen === 'playing')
+    if (photo && screen !== 'playing') setPhoto(false)
+  }, [photo, screen])
 
   // Skip drawing while an opaque screen covers the canvas. The menu covers it only with the video or still.
   useEffect(() => {
@@ -171,14 +180,22 @@ export default function App() {
   useEffect(() => {
     if (screen !== 'playing') return
     const onKey = (e: KeyboardEvent) => {
+      if (e.code === 'KeyV' && !e.repeat && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        if (!paused && !settingsOpen && !summaryOpenRef.current) setPhoto((p) => !p)
+        return
+      }
       if (e.code !== 'Escape') return
+      if (photo) {
+        setPhoto(false)
+        return
+      }
       if (settingsOpen) setSettingsOpen(false)
       else setPaused((p) => !p)
       if (settingsOpen || paused) audioRef.current?.playSfx(SFX.cancel, { volume: UI_CLICK_VOLUME })
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [screen, settingsOpen, paused])
+  }, [screen, settingsOpen, paused, photo])
 
   // Music follows the screen: menu theme on menu and chef select, cafe loop while playing (also over
   // pause, Settings and the Day Summary). The request is remembered until the first user gesture.
@@ -234,6 +251,10 @@ export default function App() {
   useEffect(() => {
     tutorialActiveRef.current = tutorial && !snap?.summary
   }, [tutorial, snap?.summary])
+
+  useEffect(() => {
+    summaryOpenRef.current = !!snap?.summary
+  }, [snap?.summary])
 
   const changeSettings = (s: Settings) => {
     setSettings(s)
@@ -301,7 +322,7 @@ export default function App() {
       style={{ '--ui-scale': settings.uiScale } as React.CSSProperties}
     >
       <canvas ref={canvasRef} className="stage" />
-      <div ref={labelsRef} className="labels" />
+      <div ref={labelsRef} className="labels" style={photo ? { display: 'none' } : undefined} />
 
       {screen === 'loading' && <LoadingScreen error={error || undefined} />}
       {screen === 'menu' && (
@@ -328,7 +349,11 @@ export default function App() {
         />
       )}
 
-      {screen === 'playing' && snap && (
+      {screen === 'playing' && photo && sceneRef.current && (
+        <PhotoMode scene={sceneRef.current} onExit={() => setPhoto(false)} />
+      )}
+
+      {screen === 'playing' && snap && !photo && (
         <div className="hud">
           <div className="stats">
             <span>Day {snap.day}</span>
@@ -338,7 +363,10 @@ export default function App() {
             </span>
             {snap.carrying && <span className="carry-chip">Carrying: {snap.carrying}</span>}
           </div>
-          <div className="controls-hint">Move: W A S D · Interact: E · Camera: drag / Z C · Zoom: wheel · Reset: R</div>
+          <div className="controls-hint">Move: W A S D · Interact: E · Camera: drag / Z C · Zoom: wheel · Reset: R · Photo mode: V</div>
+          <button className="photo-btn" onClick={() => setPhoto(true)} aria-label="Photo mode (V)" title="Photo mode (V)">
+            📷 Photo (V)
+          </button>
           <button className="pause-btn" onClick={() => setPaused(true)}>
             Pause (Esc)
           </button>

@@ -14,6 +14,7 @@ export type ClipName =
   | 'cheer'
   | 'cook'
   | 'pickup'
+  | 'collect'
 
 export interface ClipFile {
   url: string
