@@ -33,3 +33,6 @@ nul.png
 # Dev-only, not loaded at runtime
 public/assets/_previews/
 tools/meshy_batch*.json
+
+.vercel
+.env*
